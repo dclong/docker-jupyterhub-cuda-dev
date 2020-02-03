@@ -5,4 +5,4 @@ RUN apt-get update \
         libcurand10 libcublas10 libcusolver10 libnvtoolsext1 libcufft10 libnvrtc10.1 
         
 RUN pip3 install --no-cache-dir \
-        numpy scikit-learn lightgbm
+        numpy pandas pyarrow>=0.14.0 scikit-learn lightgbm
