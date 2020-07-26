@@ -1,4 +1,6 @@
+# NAME: dclong/jupyterhub-cuda_b
 FROM dclong/jupyterhub-cuda
+# GIT: https://github.com/dclong/docker-jupyterhub-cuda.git
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
