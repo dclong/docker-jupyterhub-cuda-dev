@@ -4,7 +4,7 @@ FROM dclong/jupyterhub-cuda
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        libcurand10 libcublas10 libcusolver10 libnvtoolsext1 libcufft10 libnvrtc10.1 
+        libcurand-11-0 libcublas-11-0 libcusolver-11-0 libnvtoolsext1 libcufft-11-0 libnvrtc10.1 
         
 RUN pip3 install --no-cache-dir \
         numpy pandas pyarrow>=0.14.0 scikit-learn lightgbm
