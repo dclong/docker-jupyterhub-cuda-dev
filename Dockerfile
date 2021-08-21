@@ -4,7 +4,23 @@ FROM dclong/jupyterhub-cuda
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        libcurand10 libcublas10 libcusolver10 libnvtoolsext1 libcufft10 libnvrtc10.1 
+        cuda-libraries-11-1=11.1.1-1 \
+        libnpp-11-1=11.1.2.301-1 \
+        cuda-nvtx-11-1=11.1.74-1 \
+        libcusparse-11-1=11.3.0.10-1 \
+        libcublas-11-1=11.3.0.106-1 \
+        libnccl2=2.8.4-1+cuda11.1 \
+        # libcurand10 
+        # libcusolver10 
+        # libnvtoolsext1 
+        # libcufft10 
+        # libnvrtc10.1 
+    # Keep apt from auto upgrading packages cublas and nccl. 
+    # See https://gitlab.com/nvidia/container-images/cuda/-/issues/88
+    && apt-mark hold libcublas-11-1 libnccl2 \
+    && apt-get autoremove -y \
+    && apt-get clean -y \
+    && rm -rf /var/lib/apt/lists/*
         
 RUN pip3 install --no-cache-dir \
         numpy pandas pyarrow scikit-learn lightgbm
