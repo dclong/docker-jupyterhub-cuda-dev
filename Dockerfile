@@ -20,7 +20,8 @@ RUN apt-get update \
     && apt-mark hold libcublas-11-1 libnccl2 \
     && apt-get autoremove -y \
     && apt-get clean -y \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
         
-RUN pip3 install --no-cache-dir \
+RUN pip3 install \
         numpy pandas pyarrow scikit-learn lightgbm
+    && pip3 cache purge
