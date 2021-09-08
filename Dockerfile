@@ -23,5 +23,5 @@ RUN apt-get update \
     && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
         
 RUN pip3 install \
-        numpy pandas pyarrow scikit-learn lightgbm
+        numpy pandas pyarrow scikit-learn lightgbm \
     && pip3 cache purge
