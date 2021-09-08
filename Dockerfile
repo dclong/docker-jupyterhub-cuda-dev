@@ -18,10 +18,8 @@ RUN apt-get update \
     # Keep apt from auto upgrading packages cublas and nccl. 
     # See https://gitlab.com/nvidia/container-images/cuda/-/issues/88
     && apt-mark hold libcublas-11-1 libnccl2 \
-    && apt-get autoremove -y \
-    && apt-get clean -y \
-    && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
+    && /scripts/sys/purge_cache.sh
         
 RUN pip3 install \
         numpy pandas pyarrow scikit-learn lightgbm \
-    && pip3 cache purge
+    && /scripts/sys/purge_cache.sh
